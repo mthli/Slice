@@ -2,6 +2,7 @@ package io.github.mthli.slicedemo;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 
@@ -14,9 +15,13 @@ public class MainActivity extends Activity {
         setContentView(R.layout.main);
 
         final FrameLayout frame = (FrameLayout) findViewById(R.id.frame);
-        final CustomRoundRectDrawable drawable = new CustomRoundRectDrawable(Color.BLUE, 16.0f);
+        final CustomRoundRectDrawable drawable = new CustomRoundRectDrawable(Color.WHITE, 16.0f);
 
-        frame.setBackground(drawable);
-        frame.setElevation(8.0f);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            frame.setBackground(drawable);
+            frame.setElevation(8.0f);
+        } else {
+            // TODO
+        }
     }
 }

@@ -1,12 +1,9 @@
 package io.github.mthli.slice;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Outline;
-import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.util.Log;
 
 public class CustomRoundRectDrawable extends RoundRectDrawable {
     private boolean leftTopRect = true;
@@ -138,17 +135,21 @@ public class CustomRoundRectDrawable extends RoundRectDrawable {
 
     public void setLeftTopRect(boolean leftTopRect) {
         this.leftTopRect = leftTopRect;
+        invalidateSelf();
     }
 
     public void setRightTopRect(boolean rightTopRect) {
         this.rightTopRect = rightTopRect;
+        invalidateSelf();
     }
 
     public void setRightBottomRect(boolean rightBottomRect) {
         this.rightBottomRect = rightBottomRect;
+        invalidateSelf();
     }
 
     public void setLeftButtomRect(boolean leftBottomRect) {
         this.leftBottomRect = leftBottomRect;
+        invalidateSelf();
     }
 }
