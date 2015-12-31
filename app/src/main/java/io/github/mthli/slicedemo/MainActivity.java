@@ -1,18 +1,22 @@
 package io.github.mthli.slicedemo;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 
-public class MainActivity extends Activity {
-    private FrameLayout frame;
+import io.github.mthli.slice.CustomRoundRectDrawable;
 
+public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        frame = (FrameLayout) findViewById(R.id.frame);
-        //  TODO frame.setBackground();
+        final FrameLayout frame = (FrameLayout) findViewById(R.id.frame);
+        final CustomRoundRectDrawable drawable = new CustomRoundRectDrawable(Color.BLUE, 16.0f);
+
+        frame.setBackground(drawable);
+        frame.setElevation(8.0f);
     }
 }

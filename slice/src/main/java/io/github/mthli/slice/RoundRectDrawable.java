@@ -35,13 +35,13 @@ import static io.github.mthli.slice.RoundRectDrawableWithShadow.calculateHorizon
  * Simpler and uses less resources compared to GradientDrawable or ShapeDrawable.
  */
 public class RoundRectDrawable extends Drawable {
-    private float mRadius;
-    private final Paint mPaint;
-    private final RectF mBoundsF;
-    private final Rect mBoundsI;
-    private float mPadding;
-    private boolean mInsetForPadding = false;
-    private boolean mInsetForRadius = true;
+    protected float mRadius;
+    protected final Paint mPaint;
+    protected final RectF mBoundsF;
+    protected final Rect mBoundsI;
+    protected float mPadding;
+    protected boolean mInsetForPadding = false;
+    protected boolean mInsetForRadius = true;
 
     public RoundRectDrawable(int backgroundColor, float radius) {
         mRadius = radius;
@@ -51,7 +51,7 @@ public class RoundRectDrawable extends Drawable {
         mBoundsI = new Rect();
     }
 
-    void setPadding(float padding, boolean insetForPadding, boolean insetForRadius) {
+    protected void setPadding(float padding, boolean insetForPadding, boolean insetForRadius) {
         if (padding == mPadding && mInsetForPadding == insetForPadding &&
                 mInsetForRadius == insetForRadius) {
             return;
@@ -63,7 +63,7 @@ public class RoundRectDrawable extends Drawable {
         invalidateSelf();
     }
 
-    float getPadding() {
+    protected float getPadding() {
         return mPadding;
     }
 
@@ -72,7 +72,7 @@ public class RoundRectDrawable extends Drawable {
         canvas.drawRoundRect(mBoundsF, mRadius, mRadius, mPaint);
     }
 
-    private void updateBounds(Rect bounds) {
+    protected void updateBounds(Rect bounds) {
         if (bounds == null) {
             bounds = getBounds();
         }
@@ -98,7 +98,7 @@ public class RoundRectDrawable extends Drawable {
         outline.setRoundRect(mBoundsI, mRadius);
     }
 
-    void setRadius(float radius) {
+    protected void setRadius(float radius) {
         if (radius == mRadius) {
             return;
         }
