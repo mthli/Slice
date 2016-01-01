@@ -3,7 +3,7 @@ Slice
 
 **YOU DON'T NEED CardView**.
 
-Android drawable that allows you custom round rect position. with more friendly and flexible API. 
+Android drawable that allows you custom round rect position, with more friendly and flexible API. 
 
 Support Android 2.1+
 
