@@ -8,8 +8,8 @@ import android.os.Build;
 
 public class CustomRoundRectDrawableWithShadow extends RoundRectDrawableWithShadow {
     private boolean leftTopRect = false;
-    private boolean rightTopRect = false;
-    private boolean leftBottomRect = true;
+    private boolean rightTopRect = true;
+    private boolean leftBottomRect = false;
     private boolean rightBottomRect = true;
 
     private boolean leftEdgeShadow = true;
@@ -222,11 +222,17 @@ public class CustomRoundRectDrawableWithShadow extends RoundRectDrawableWithShad
 
             if (leftTopRect) {
                 saved = canvas.save();
+                canvas.translate(mCardBounds.left + inset, mCardBounds.top + inset);
+                canvas.rotate(270.0f);
+                canvas.drawRect(0.0f, top, inset, -mCornerRadius, mEdgeShadowPaint);
                 canvas.restoreToCount(saved);
             }
 
             if (leftBottomRect) {
                 saved = canvas.save();
+                canvas.translate(mCardBounds.left + inset, mCardBounds.bottom);
+                canvas.rotate(270.0f);
+                canvas.drawRect(0.0f, top, inset, -mCornerRadius, mEdgeShadowPaint);
                 canvas.restoreToCount(saved);
             }
         }
@@ -265,11 +271,17 @@ public class CustomRoundRectDrawableWithShadow extends RoundRectDrawableWithShad
 
             if (rightTopRect) {
                 saved = canvas.save();
+                canvas.translate(mCardBounds.right - inset, mCardBounds.top);
+                canvas.rotate(90.0f);
+                canvas.drawRect(0.0f, top, inset, -mCornerRadius, mEdgeShadowPaint);
                 canvas.restoreToCount(saved);
             }
 
             if (rightBottomRect) {
                 saved = canvas.save();
+                canvas.translate(mCardBounds.right - inset, mCardBounds.bottom - inset);
+                canvas.rotate(90.0f);
+                canvas.drawRect(0.0f, top, inset, -mCornerRadius, mEdgeShadowPaint);
                 canvas.restoreToCount(saved);
             }
         }
