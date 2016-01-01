@@ -21,9 +21,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import io.github.mthli.slice.Slice;
 
@@ -46,29 +48,30 @@ public class MainActivity extends Activity {
         }
 
         @Override
-        public void onBindViewHolder(RecyclerHolder holder, int position) {
-            Slice slice = new Slice(holder.getView());
+        public void onBindViewHolder(final RecyclerHolder holder, int position) {
+            Slice slice = new Slice(holder.getFrame());
             slice.setRadius(8.0f);
+            slice.setElevation(8.0f);
 
             if (position == 0) {
                 slice.showLeftTopRect(false);
                 slice.showRightTopRect(false);
                 slice.showRightBottomRect(true);
-                slice.showLeftButtomRect(true);
+                slice.showLeftBottomRect(true);
                 slice.showTopEdgeShadow(true);
                 slice.showBottomEdgeShadow(false);
             } else if (position == getItemCount() - 1) {
                 slice.showLeftTopRect(true);
                 slice.showRightTopRect(true);
                 slice.showRightBottomRect(false);
-                slice.showLeftButtomRect(false);
+                slice.showLeftBottomRect(false);
                 slice.showTopEdgeShadow(false);
                 slice.showBottomEdgeShadow(true);
             } else {
                 slice.showLeftTopRect(true);
                 slice.showRightTopRect(true);
                 slice.showRightBottomRect(true);
-                slice.showLeftButtomRect(true);
+                slice.showLeftBottomRect(true);
                 slice.showTopEdgeShadow(false);
                 slice.showBottomEdgeShadow(false);
             }
@@ -76,15 +79,15 @@ public class MainActivity extends Activity {
     }
 
     public static class RecyclerHolder extends RecyclerView.ViewHolder {
-        private View view;
+        private FrameLayout frame;
 
         public RecyclerHolder(View view) {
             super(view);
-            this.view = view;
+            this.frame = (FrameLayout) view.findViewById(R.id.frame);
         }
 
-        public View getView() {
-            return view;
+        public FrameLayout getFrame() {
+            return frame;
         }
     }
 

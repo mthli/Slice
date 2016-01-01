@@ -16,7 +16,6 @@
 
 package io.github.mthli.slice;
 
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Log;
@@ -29,8 +28,7 @@ public class Slice {
 
     public static final float DEFAULT_RADIUS_DP = 2.0f;
     public static final float DEFAULT_ELEVATION_DP = 2.0f;
-    // public static final int DEFAULT_BACKGROUND_COLOR = 0xFFFAFAFA;
-    public static final int DEFAULT_BACKGROUND_COLOR = Color.BLUE;
+    public static final int DEFAULT_BACKGROUND_COLOR = 0xFFFAFAFA;
 
     private View view;
     private Drawable drawable;
@@ -108,7 +106,7 @@ public class Slice {
         }
     }
 
-    public void showLeftButtomRect(boolean show) {
+    public void showLeftBottomRect(boolean show) {
         if (SDK_LOLLIPOP) {
             ((CustomRoundRectDrawable) drawable).showLeftBottomRect(show);
         } else {
@@ -120,7 +118,7 @@ public class Slice {
         if (!SDK_LOLLIPOP) {
             ((CustomRoundRectDrawableWithShadow) drawable).showLeftEdgeShadow(show);
         } else {
-            Log.i(TAG, "Only work for pre API 21.");
+            Log.i(TAG, "showLeftEdgeShadow() only work for pre API 21.");
         }
     }
 
@@ -128,7 +126,7 @@ public class Slice {
         if (!SDK_LOLLIPOP) {
             ((CustomRoundRectDrawableWithShadow) drawable).showTopEdgeShadow(show);
         } else {
-            Log.i(TAG, "Only work for pre API 21.");
+            Log.i(TAG, "showTopEdgeShadow() only work for pre API 21.");
         }
     }
 
@@ -136,7 +134,7 @@ public class Slice {
         if (!SDK_LOLLIPOP) {
             ((CustomRoundRectDrawableWithShadow) drawable).showRightEdgeShadow(show);
         } else {
-            Log.i(TAG, "Only work for pre API 21.");
+            Log.i(TAG, "showRightEdgeShadow() only work for pre API 21.");
         }
     }
 
@@ -144,7 +142,7 @@ public class Slice {
         if (!SDK_LOLLIPOP) {
             ((CustomRoundRectDrawableWithShadow) drawable).showBottomEdgeShadow(show);
         } else {
-            Log.i(TAG, "Only work for pre API 21.");
+            Log.i(TAG, "showBottomEdgeShadow() only work for pre API 21.");
         }
     }
 }

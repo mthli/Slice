@@ -18,7 +18,7 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent">
 
-    <FrameLayout android:id="@+id/item"
+    <FrameLayout android:id="@+id/frame"
             android:layout_width="match_parent"
             android:layout_height="96dp"
             android:layout_marginLeft="16dp"
