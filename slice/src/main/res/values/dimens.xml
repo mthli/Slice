@@ -16,6 +16,6 @@
 
 <resources>
 
-    <string name="app_name">Slice</string>
+    <dimen name="cardview_compat_inset_shadow">1dp</dimen>
 
 </resources>

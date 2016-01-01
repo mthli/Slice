@@ -107,10 +107,7 @@ public class CustomRoundRectDrawable extends RoundRectDrawable {
     private Path buildConvexPath() {
         Path path = new Path();
 
-        // 移动到指定的绘制起点
         path.moveTo(mBoundsF.left, (mBoundsF.top + mBoundsF.bottom) / 2.0f);
-
-        // 判断是否需要绘制左上角的圆角轮廓
         path.lineTo(mBoundsF.left, mBoundsF.top + mRadius);
         if (leftTopRect) {
             path.lineTo(mBoundsF.left, mBoundsF.top);
@@ -119,7 +116,6 @@ public class CustomRoundRectDrawable extends RoundRectDrawable {
             path.arcTo(rectF, 180.0f, 90.0f);
         }
 
-        // 判断是否需要绘制右上角的圆角轮廓
         path.lineTo(mBoundsF.right - mRadius, mBoundsF.top);
         if (rightTopRect) {
             path.lineTo(mBoundsF.right, mBoundsF.top);
@@ -128,7 +124,6 @@ public class CustomRoundRectDrawable extends RoundRectDrawable {
             path.arcTo(rectF, 270.0f, 90.0f);
         }
 
-        // 判断是否需要绘制右下角的圆角轮廓
         path.lineTo(mBoundsF.right, mBoundsF.bottom - mRadius);
         if (rightBottomRect) {
             path.lineTo(mBoundsF.right, mBoundsF.bottom);
@@ -137,7 +132,6 @@ public class CustomRoundRectDrawable extends RoundRectDrawable {
             path.arcTo(rectF, 0.0f, 90.0f);
         }
 
-        // 判断是否需要绘制左下脚的圆角轮廓
         path.lineTo(mBoundsF.left + mRadius, mBoundsF.bottom);
         if (leftBottomRect) {
             path.lineTo(mBoundsF.left, mBoundsF.bottom);
@@ -146,9 +140,7 @@ public class CustomRoundRectDrawable extends RoundRectDrawable {
             path.arcTo(rectF, 90.0f, 90.0f);
         }
 
-        // 连接成一个整体
         path.close();
-
         return path;
     }
 
