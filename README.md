@@ -13,7 +13,7 @@ For example, we can build a card style background for RecyclerView:
 
 ![example.png](./example.png "example.png")
 
-And here has a [demo apk]( "SliceDemo.1.0.apk"), and it's [source code]( "SliceDemo.1.0.apk's source code"), very easy to understand~
+And here has a [demo apk](https://github.com/mthli/Slice/releases/download/v1.0/SliceDemo.1.0.apk "SliceDemo.1.0.apk"), and it's [source code](https://github.com/mthli/Slice/tree/master/app "SliceDemo.1.0.apk's source code"), very easy to understand~
 
 ## API
 
@@ -43,9 +43,11 @@ And here has a [demo apk]( "SliceDemo.1.0.apk"), and it's [source code]( "SliceD
 
 At your top-level `build.gradle` file:
 
-    repositories {
-        // ...
-        maven { url 'https://jitpack.io' }
+    allprojects {
+        repositories {
+            // ...
+            maven { url 'https://jitpack.io' }
+        }
     }
     
 And then at your project `build.gradle` file:
