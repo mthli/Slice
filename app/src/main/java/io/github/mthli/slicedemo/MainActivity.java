@@ -73,7 +73,7 @@ public class MainActivity extends Activity {
             slice.setElevation(2.0f);
 
             if (position == 0) {
-                slice.setRadius(4.0f);
+                slice.setRadius(8.0f);
                 slice.showLeftTopRect(false);
                 slice.showRightTopRect(false);
                 slice.showRightBottomRect(true);
@@ -81,7 +81,7 @@ public class MainActivity extends Activity {
                 slice.showTopEdgeShadow(true);
                 slice.showBottomEdgeShadow(false);
             } else if (position == getItemCount() - 1) {
-                slice.setRadius(4.0f);
+                slice.setRadius(8.0f);
                 slice.showLeftTopRect(true);
                 slice.showRightTopRect(true);
                 slice.showRightBottomRect(false);
