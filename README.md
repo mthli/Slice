@@ -1,11 +1,43 @@
 Slice
 ===
 
-Android drawable that allows you custom round rect position.
+**YOU DON'T NEED CardView**.
+
+Android drawable that allows you custom round rect position. with more friendly and flexible API. 
 
 Support Android 2.1+
 
-**UNDER DEVELOPMENT**.
+## Example
+
+For example, we can build a card style background for RecyclerView:
+
+![example.png](./example.png "example.png")
+
+And here has a [demo apk]( "").
+
+## API
+
+ - `setRadius(float radiusDp)`
+ 
+ - `setElevation(float elevationDp)`
+ 
+ - `setColor(int color)`
+ 
+ - `showLeftTopRect(boolean show)`
+ 
+ - `showRightTopRect(boolean show)`
+ 
+ - `showRightBottomRect(boolean show)`
+ 
+ - `showLeftBottomRect(boolean show)`
+ 
+ - `showLeftEdgeShadow(boolean show)` only work for pre API 21.
+ 
+ - `showTopEdgeShadow(boolean show)` only work for pre API 21.
+ 
+ - `showRightEdgeShadow(boolean show)` only work for pre API 21.
+ 
+ - `showBottomEdgeShadow(boolean show)` only work for pre API 21.
 
 ## License
 
