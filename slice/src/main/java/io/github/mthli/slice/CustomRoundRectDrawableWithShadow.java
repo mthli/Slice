@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Matthew Lee
+ * Copyright (C) 2016 Matthew Lee
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -344,42 +344,70 @@ public class CustomRoundRectDrawableWithShadow extends RoundRectDrawableWithShad
         }
     }
 
-    public void setLeftTopRect(boolean leftTopRect) {
+    public float getRadius() {
+        return mCornerRadius;
+    }
+
+    public void setRadius(float radius) {
+        super.setCornerRadius(radius);
+    }
+
+    @Override
+    public float getShadowSize() {
+        return mRawShadowSize;
+    }
+
+    @Override
+    public void setShadowSize(float size) {
+        super.setShadowSize(size, mRawMaxShadowSize);
+    }
+
+    @Override
+    public float getMaxShadowSize() {
+        return mRawMaxShadowSize;
+    }
+
+    @Override
+    public void setMaxShadowSize(float size) {
+        super.setShadowSize(mRawShadowSize, size);
+    }
+
+    public void showLeftTopRect(boolean leftTopRect) {
         this.leftTopRect = leftTopRect;
         invalidateSelf();
     }
 
-    public void setRightTopRect(boolean rightTopRect) {
+    public void showRightTopRect(boolean rightTopRect) {
         this.rightTopRect = rightTopRect;
         invalidateSelf();
     }
 
-    public void setRightBottomRect(boolean rightBottomRect) {
+    public void showRightBottomRect(boolean rightBottomRect) {
         this.rightBottomRect = rightBottomRect;
         invalidateSelf();
     }
 
-    public void setLeftBottomRect(boolean leftBottomRect) {
+    public void showLeftBottomRect(boolean leftBottomRect) {
         this.leftBottomRect = leftBottomRect;
         invalidateSelf();
     }
 
-    public void setLeftEdgeShadow(boolean leftEdgeShadow) {
+    public void showLeftEdgeShadow(boolean leftEdgeShadow) {
         this.leftEdgeShadow = leftEdgeShadow;
         invalidateSelf();
     }
 
-    public void setTopEdgeShadow(boolean topEdgeShadow) {
+    public void showTopEdgeShadow(boolean topEdgeShadow) {
         this.topEdgeShadow = topEdgeShadow;
         invalidateSelf();
     }
 
-    public void setRightEdgeShadow(boolean rightEdgeShadow) {
+    public void showRightEdgeShadow(boolean rightEdgeShadow) {
         this.rightEdgeShadow = rightEdgeShadow;
         invalidateSelf();
     }
 
-    public void setBottomEdgeShadow(boolean bottomEdgeShadow) {
+    public void showBottomEdgeShadow(boolean bottomEdgeShadow) {
         this.bottomEdgeShadow = bottomEdgeShadow;
         invalidateSelf();
     }

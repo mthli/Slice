@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Matthew Lee
+ * Copyright (C) 2016 Matthew Lee
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,13 +23,13 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.os.Build;
 
+@TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class CustomRoundRectDrawable extends RoundRectDrawable {
     private boolean leftTopRect = false;
     private boolean rightTopRect = false;
     private boolean leftBottomRect = false;
     private boolean rightBottomRect = false;
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public CustomRoundRectDrawable(int backgroundColor, float radius) {
         super(backgroundColor, radius);
     }
@@ -144,22 +144,32 @@ public class CustomRoundRectDrawable extends RoundRectDrawable {
         return path;
     }
 
-    public void setLeftTopRect(boolean leftTopRect) {
+    @Override
+    public float getRadius() {
+        return mRadius;
+    }
+
+    @Override
+    public void setRadius(float radius) {
+        super.setRadius(radius);
+    }
+
+    public void showLeftTopRect(boolean leftTopRect) {
         this.leftTopRect = leftTopRect;
         invalidateSelf();
     }
 
-    public void setRightTopRect(boolean rightTopRect) {
+    public void showRightTopRect(boolean rightTopRect) {
         this.rightTopRect = rightTopRect;
         invalidateSelf();
     }
 
-    public void setRightBottomRect(boolean rightBottomRect) {
+    public void showRightBottomRect(boolean rightBottomRect) {
         this.rightBottomRect = rightBottomRect;
         invalidateSelf();
     }
 
-    public void setLeftButtomRect(boolean leftBottomRect) {
+    public void showLeftButtomRect(boolean leftBottomRect) {
         this.leftBottomRect = leftBottomRect;
         invalidateSelf();
     }

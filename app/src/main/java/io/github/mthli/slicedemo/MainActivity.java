@@ -3,6 +3,7 @@ package io.github.mthli.slicedemo;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.widget.FrameLayout;
 
 import io.github.mthli.slice.CustomRoundRectDrawableWithShadow;
@@ -21,22 +22,22 @@ public class MainActivity extends Activity {
         CustomRoundRectDrawableWithShadow drawableCenter = new CustomRoundRectDrawableWithShadow(getResources(), Color.WHITE, 16.0f, 4.0f, 8.0f);
         CustomRoundRectDrawableWithShadow drawableBottom = new CustomRoundRectDrawableWithShadow(getResources(), Color.WHITE, 16.0f, 4.0f, 8.0f);
 
-        drawableTop.setLeftBottomRect(true);
-        drawableTop.setRightBottomRect(true);
-        drawableTop.setBottomEdgeShadow(false);
+        drawableTop.showLeftBottomRect(true);
+        drawableTop.showRightBottomRect(true);
+        drawableTop.showBottomEdgeShadow(false);
         frameTop.setBackground(drawableTop);
 
-        drawableCenter.setLeftTopRect(true);
-        drawableCenter.setRightTopRect(true);
-        drawableCenter.setRightBottomRect(true);
-        drawableCenter.setLeftBottomRect(true);
-        drawableCenter.setTopEdgeShadow(false);
-        drawableCenter.setBottomEdgeShadow(false);
+        drawableCenter.showLeftTopRect(true);
+        drawableCenter.showRightTopRect(true);
+        drawableCenter.showRightBottomRect(true);
+        drawableCenter.showLeftBottomRect(true);
+        drawableCenter.showTopEdgeShadow(false);
+        drawableCenter.showBottomEdgeShadow(false);
         frameCenter.setBackground(drawableCenter);
 
-        drawableBottom.setLeftTopRect(true);
-        drawableBottom.setRightTopRect(true);
-        drawableBottom.setTopEdgeShadow(false);
+        drawableBottom.showLeftTopRect(true);
+        drawableBottom.showRightTopRect(true);
+        drawableBottom.showTopEdgeShadow(false);
         frameBottom.setBackground(drawableBottom);
     }
 }
