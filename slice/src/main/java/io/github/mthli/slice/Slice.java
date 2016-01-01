@@ -16,26 +16,25 @@
 
 package io.github.mthli.slice;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Log;
+import android.view.View;
 
 public class Slice {
     private static final String TAG = Slice.class.getName();
     private static final boolean SDK_LOLLIPOP = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
 
     public static final float DEFAULT_RADIUS = 0.0f;
-    public static final int DEFAULT_BACKGROUND_COLOR = Color.WHITE; // TODO
+    public static final int DEFAULT_BACKGROUND_COLOR = 0xFFFAFAFA;
     public static final float DEFAULT_ELEVATION = 0.0f;
     public static final float DEFAULT_MAX_ELEVATION = 0.0f;
 
-    private Context context;
+    private View view;
     private Drawable drawable;
 
-    public Slice(Context context) {
-        this.context = context;
+    public Slice(View view) {
+        this.view = view;
         init();
     }
 
@@ -43,20 +42,14 @@ public class Slice {
         if (SDK_LOLLIPOP) {
             drawable = new CustomRoundRectDrawable(DEFAULT_BACKGROUND_COLOR, DEFAULT_RADIUS);
         } else {
-            drawable = new CustomRoundRectDrawableWithShadow(context.getResources(), DEFAULT_BACKGROUND_COLOR, DEFAULT_RADIUS, DEFAULT_ELEVATION, DEFAULT_MAX_ELEVATION);
+            drawable = new CustomRoundRectDrawableWithShadow(view.getResources(), DEFAULT_BACKGROUND_COLOR, DEFAULT_RADIUS, DEFAULT_ELEVATION, DEFAULT_MAX_ELEVATION);
         }
+
+        view.setBackground(drawable);
     }
 
     private float dp2px(float dp) {
-        return 0.0f; // TODO
-    }
-
-    public float getRadius() {
-        if (SDK_LOLLIPOP) {
-            return ((CustomRoundRectDrawable) drawable).getRadius();
-        } else {
-            return ((CustomRoundRectDrawableWithShadow) drawable).getRadius();
-        }
+        return view.getResources().getDisplayMetrics().density * dp;
     }
 
     public void setRadius(float radiusDp) {
@@ -64,6 +57,22 @@ public class Slice {
             ((CustomRoundRectDrawable) drawable).setRadius(dp2px(radiusDp));
         } else {
             ((CustomRoundRectDrawableWithShadow) drawable).setRadius(dp2px(radiusDp));
+        }
+    }
+
+    public void setElevation(float elevationDp) {
+        if (SDK_LOLLIPOP) {
+            view.setElevation(dp2px(elevationDp));
+        } else {
+            ((CustomRoundRectDrawableWithShadow) drawable).setShadowSize(dp2px(elevationDp));
+        }
+    }
+
+    public void setColor(int color) {
+        if (SDK_LOLLIPOP) {
+            ((CustomRoundRectDrawable) drawable).setColor(color);
+        } else {
+            ((CustomRoundRectDrawableWithShadow) drawable).setColor(color);
         }
     }
 

@@ -88,9 +88,9 @@ class RoundRectDrawableWithShadow extends Drawable {
 
     RoundRectDrawableWithShadow(Resources resources, int backgroundColor, float radius,
                                 float shadowSize, float maxShadowSize) {
-        mShadowStartColor = resources.getColor(R.color.cardview_shadow_start_color);
-        mShadowEndColor = resources.getColor(R.color.cardview_shadow_end_color);
-        mInsetShadow = resources.getDimensionPixelSize(R.dimen.cardview_compat_inset_shadow);
+        mShadowStartColor = 0x37000000;
+        mShadowEndColor = 0x03000000;
+        mInsetShadow = (int) (resources.getDisplayMetrics().density * 1.0f);
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
         mPaint.setColor(backgroundColor);
         mCornerShadowPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);

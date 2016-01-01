@@ -344,17 +344,8 @@ public class CustomRoundRectDrawableWithShadow extends RoundRectDrawableWithShad
         }
     }
 
-    public float getRadius() {
-        return mCornerRadius;
-    }
-
     public void setRadius(float radius) {
         super.setCornerRadius(radius);
-    }
-
-    @Override
-    public float getShadowSize() {
-        return mRawShadowSize;
     }
 
     @Override
@@ -363,13 +354,8 @@ public class CustomRoundRectDrawableWithShadow extends RoundRectDrawableWithShad
     }
 
     @Override
-    public float getMaxShadowSize() {
-        return mRawMaxShadowSize;
-    }
-
-    @Override
-    public void setMaxShadowSize(float size) {
-        super.setShadowSize(mRawShadowSize, size);
+    public void setColor(int color) {
+        super.setColor(color);
     }
 
     public void showLeftTopRect(boolean show) {

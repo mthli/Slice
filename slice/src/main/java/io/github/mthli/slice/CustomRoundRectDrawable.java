@@ -145,13 +145,17 @@ public class CustomRoundRectDrawable extends RoundRectDrawable {
     }
 
     @Override
-    public float getRadius() {
-        return mRadius;
+    public void setRadius(float radius) {
+        super.setRadius(radius);
+    }
+
+    public int getColor() {
+        return mPaint.getColor();
     }
 
     @Override
-    public void setRadius(float radius) {
-        super.setRadius(radius);
+    public void setColor(int color) {
+        super.setColor(color);
     }
 
     public void showLeftTopRect(boolean show) {
