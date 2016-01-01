@@ -154,23 +154,23 @@ public class CustomRoundRectDrawable extends RoundRectDrawable {
         super.setRadius(radius);
     }
 
-    public void showLeftTopRect(boolean leftTopRect) {
-        this.leftTopRect = leftTopRect;
+    public void showLeftTopRect(boolean show) {
+        this.leftTopRect = show;
         invalidateSelf();
     }
 
-    public void showRightTopRect(boolean rightTopRect) {
-        this.rightTopRect = rightTopRect;
+    public void showRightTopRect(boolean show) {
+        this.rightTopRect = show;
         invalidateSelf();
     }
 
-    public void showRightBottomRect(boolean rightBottomRect) {
-        this.rightBottomRect = rightBottomRect;
+    public void showRightBottomRect(boolean show) {
+        this.rightBottomRect = show;
         invalidateSelf();
     }
 
-    public void showLeftButtomRect(boolean leftBottomRect) {
-        this.leftBottomRect = leftBottomRect;
+    public void showLeftBottomRect(boolean show) {
+        this.leftBottomRect = show;
         invalidateSelf();
     }
 }

@@ -372,43 +372,43 @@ public class CustomRoundRectDrawableWithShadow extends RoundRectDrawableWithShad
         super.setShadowSize(mRawShadowSize, size);
     }
 
-    public void showLeftTopRect(boolean leftTopRect) {
-        this.leftTopRect = leftTopRect;
+    public void showLeftTopRect(boolean show) {
+        this.leftTopRect = show;
         invalidateSelf();
     }
 
-    public void showRightTopRect(boolean rightTopRect) {
-        this.rightTopRect = rightTopRect;
+    public void showRightTopRect(boolean show) {
+        this.rightTopRect = show;
         invalidateSelf();
     }
 
-    public void showRightBottomRect(boolean rightBottomRect) {
-        this.rightBottomRect = rightBottomRect;
+    public void showRightBottomRect(boolean show) {
+        this.rightBottomRect = show;
         invalidateSelf();
     }
 
-    public void showLeftBottomRect(boolean leftBottomRect) {
-        this.leftBottomRect = leftBottomRect;
+    public void showLeftBottomRect(boolean show) {
+        this.leftBottomRect = show;
         invalidateSelf();
     }
 
-    public void showLeftEdgeShadow(boolean leftEdgeShadow) {
-        this.leftEdgeShadow = leftEdgeShadow;
+    public void showLeftEdgeShadow(boolean show) {
+        this.leftEdgeShadow = show;
         invalidateSelf();
     }
 
-    public void showTopEdgeShadow(boolean topEdgeShadow) {
-        this.topEdgeShadow = topEdgeShadow;
+    public void showTopEdgeShadow(boolean show) {
+        this.topEdgeShadow = show;
         invalidateSelf();
     }
 
-    public void showRightEdgeShadow(boolean rightEdgeShadow) {
-        this.rightEdgeShadow = rightEdgeShadow;
+    public void showRightEdgeShadow(boolean show) {
+        this.rightEdgeShadow = show;
         invalidateSelf();
     }
 
-    public void showBottomEdgeShadow(boolean bottomEdgeShadow) {
-        this.bottomEdgeShadow = bottomEdgeShadow;
+    public void showBottomEdgeShadow(boolean show) {
+        this.bottomEdgeShadow = show;
         invalidateSelf();
     }
 }
