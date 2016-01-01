@@ -9,8 +9,8 @@ import android.os.Build;
 public class CustomRoundRectDrawableWithShadow extends RoundRectDrawableWithShadow {
     private boolean leftTopRect = false;
     private boolean rightTopRect = false;
-    private boolean leftBottomRect = false;
-    private boolean rightBottomRect = false;
+    private boolean leftBottomRect = true;
+    private boolean rightBottomRect = true;
 
     private boolean leftEdgeShadow = true;
     private boolean topEdgeShadow = true;
@@ -241,11 +241,15 @@ public class CustomRoundRectDrawableWithShadow extends RoundRectDrawableWithShad
 
             if (leftTopRect) {
                 saved = canvas.save();
+                canvas.translate(mCardBounds.left, mCardBounds.top + inset);
+                canvas.drawRect(0, top, inset, -mCornerRadius, mEdgeShadowPaint);
                 canvas.restoreToCount(saved);
             }
 
             if (rightTopRect) {
                 saved = canvas.save();
+                canvas.translate(mCardBounds.right - inset, mCardBounds.top + inset);
+                canvas.drawRect(0, top, inset, -mCornerRadius, mEdgeShadowPaint);
                 canvas.restoreToCount(saved);
             }
         }
@@ -275,17 +279,23 @@ public class CustomRoundRectDrawableWithShadow extends RoundRectDrawableWithShad
         if (suggest && bottomEdgeShadow) {
             int saved = canvas.save();
             canvas.translate(mCardBounds.right - inset, mCardBounds.bottom - inset);
-            canvas.rotate(180f);
-            canvas.drawRect(0, top, mCardBounds.width() - 2 * inset, -mCornerRadius + mShadowSize, mEdgeShadowPaint);
+            canvas.rotate(180.0f);
+            canvas.drawRect(0.0f, top, mCardBounds.width() - inset * 2.0f, -mCornerRadius + mShadowSize, mEdgeShadowPaint);
             canvas.restoreToCount(saved);
 
             if (leftBottomRect) {
                 saved = canvas.save();
+                canvas.translate(mCardBounds.left + inset, mCardBounds.bottom - inset);
+                canvas.rotate(180.0f);
+                canvas.drawRect(0.0f, top, inset, -mCornerRadius + mShadowSize, mEdgeShadowPaint);
                 canvas.restoreToCount(saved);
             }
 
             if (rightBottomRect) {
                 saved = canvas.save();
+                canvas.translate(mCardBounds.right, mCardBounds.bottom - inset);
+                canvas.rotate(180.0f);
+                canvas.drawRect(0.0f, top, inset, -mCornerRadius + mShadowSize, mEdgeShadowPaint);
                 canvas.restoreToCount(saved);
             }
         }
