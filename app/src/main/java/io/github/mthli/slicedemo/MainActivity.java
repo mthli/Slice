@@ -13,9 +13,30 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        FrameLayout frame = (FrameLayout) findViewById(R.id.frame);
-        CustomRoundRectDrawableWithShadow drawable = new CustomRoundRectDrawableWithShadow(getResources(), Color.WHITE, 16.0f, 4.0f, 8.0f);
+        FrameLayout frameTop = (FrameLayout) findViewById(R.id.frame_top);
+        FrameLayout frameCenter = (FrameLayout) findViewById(R.id.frame_center);
+        FrameLayout frameBottom = (FrameLayout) findViewById(R.id.frame_bottom);
 
-        frame.setBackground(drawable);
+        CustomRoundRectDrawableWithShadow drawableTop = new CustomRoundRectDrawableWithShadow(getResources(), Color.WHITE, 16.0f, 4.0f, 8.0f);
+        CustomRoundRectDrawableWithShadow drawableCenter = new CustomRoundRectDrawableWithShadow(getResources(), Color.WHITE, 16.0f, 4.0f, 8.0f);
+        CustomRoundRectDrawableWithShadow drawableBottom = new CustomRoundRectDrawableWithShadow(getResources(), Color.WHITE, 16.0f, 4.0f, 8.0f);
+
+        drawableTop.setLeftButtomRect(true);
+        drawableTop.setRightBottomRect(true);
+        drawableTop.setBottomEdgeShadow(false);
+        frameTop.setBackground(drawableTop);
+
+        drawableCenter.setLeftTopRect(true);
+        drawableCenter.setRightTopRect(true);
+        drawableCenter.setRightBottomRect(true);
+        drawableCenter.setLeftButtomRect(true);
+        drawableCenter.setTopEdgeShadow(false);
+        drawableCenter.setBottomEdgeShadow(false);
+        frameCenter.setBackground(drawableCenter);
+
+        drawableBottom.setLeftTopRect(true);
+        drawableBottom.setRightTopRect(true);
+        drawableBottom.setTopEdgeShadow(false);
+        frameBottom.setBackground(drawableBottom);
     }
 }

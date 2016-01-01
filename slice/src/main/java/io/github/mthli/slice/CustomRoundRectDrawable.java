@@ -1,16 +1,19 @@
 package io.github.mthli.slice;
 
+import android.annotation.TargetApi;
 import android.graphics.Canvas;
 import android.graphics.Outline;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.os.Build;
 
 public class CustomRoundRectDrawable extends RoundRectDrawable {
-    private boolean leftTopRect;
-    private boolean rightTopRect;
-    private boolean leftBottomRect;
-    private boolean rightBottomRect;
+    private boolean leftTopRect = false;
+    private boolean rightTopRect = false;
+    private boolean leftBottomRect = false;
+    private boolean rightBottomRect = false;
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public CustomRoundRectDrawable(int backgroundColor, float radius) {
         super(backgroundColor, radius);
     }

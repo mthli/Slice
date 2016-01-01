@@ -1,5 +1,6 @@
 package io.github.mthli.slice;
 
+import android.annotation.TargetApi;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -8,15 +9,16 @@ import android.os.Build;
 
 public class CustomRoundRectDrawableWithShadow extends RoundRectDrawableWithShadow {
     private boolean leftTopRect = false;
-    private boolean rightTopRect = true;
+    private boolean rightTopRect = false;
     private boolean leftBottomRect = false;
-    private boolean rightBottomRect = true;
+    private boolean rightBottomRect = false;
 
     private boolean leftEdgeShadow = true;
     private boolean topEdgeShadow = true;
     private boolean rightEdgeShadow = true;
     private boolean bottomEdgeShadow = true;
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     public CustomRoundRectDrawableWithShadow(Resources resources, int backgroundColor, float radius, float shadowSize, float maxShadowSize) {
         super(resources, backgroundColor, radius, shadowSize, maxShadowSize);
         init();
@@ -311,5 +313,45 @@ public class CustomRoundRectDrawableWithShadow extends RoundRectDrawableWithShad
                 canvas.restoreToCount(saved);
             }
         }
+    }
+
+    public void setLeftTopRect(boolean leftTopRect) {
+        this.leftTopRect = leftTopRect;
+        invalidateSelf();
+    }
+
+    public void setRightTopRect(boolean rightTopRect) {
+        this.rightTopRect = rightTopRect;
+        invalidateSelf();
+    }
+
+    public void setRightBottomRect(boolean rightBottomRect) {
+        this.rightBottomRect = rightBottomRect;
+        invalidateSelf();
+    }
+
+    public void setLeftButtomRect(boolean leftBottomRect) {
+        this.leftBottomRect = leftBottomRect;
+        invalidateSelf();
+    }
+
+    public void setLeftEdgeShadow(boolean leftEdgeShadow) {
+        this.leftEdgeShadow = leftEdgeShadow;
+        invalidateSelf();
+    }
+
+    public void setTopEdgeShadow(boolean topEdgeShadow) {
+        this.topEdgeShadow = topEdgeShadow;
+        invalidateSelf();
+    }
+
+    public void setRightEdgeShadow(boolean rightEdgeShadow) {
+        this.rightEdgeShadow = rightEdgeShadow;
+        invalidateSelf();
+    }
+
+    public void setBottomEdgeShadow(boolean bottomEdgeShadow) {
+        this.bottomEdgeShadow = bottomEdgeShadow;
+        invalidateSelf();
     }
 }
