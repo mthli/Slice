@@ -30,15 +30,14 @@ import io.github.mthli.slice.Slice;
 
 public class MainActivity extends Activity {
     public static class RecyclerAdapter extends RecyclerView.Adapter<RecyclerHolder> {
+        private static final int VIEW_TYPE_TOP = 0x01;
+        private static final int VIEW_TYPE_CENTER = 0x02;
+        private static final int VIEW_TYPE_BOTTOM = 0x03;
+
         private Context context;
 
         public RecyclerAdapter(Context context) {
             this.context = context;
-        }
-
-        @Override
-        public RecyclerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new RecyclerHolder(LayoutInflater.from(context).inflate(R.layout.item, parent, false));
         }
 
         @Override
@@ -47,12 +46,34 @@ public class MainActivity extends Activity {
         }
 
         @Override
+        public int getItemViewType(int position) {
+            if (position == 0) {
+                return VIEW_TYPE_TOP;
+            } else if (position == getItemCount() - 1) {
+                return VIEW_TYPE_BOTTOM;
+            } else {
+                return VIEW_TYPE_CENTER;
+            }
+        }
+
+        @Override
+        public RecyclerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            if (viewType == VIEW_TYPE_TOP) {
+                return new RecyclerHolder(LayoutInflater.from(context).inflate(R.layout.item_top, parent, false));
+            } else if (viewType == VIEW_TYPE_CENTER) {
+                return new RecyclerHolder(LayoutInflater.from(context).inflate(R.layout.item_center, parent, false));
+            } else {
+                return new RecyclerHolder(LayoutInflater.from(context).inflate(R.layout.item_bottom, parent, false));
+            }
+        }
+
+        @Override
         public void onBindViewHolder(final RecyclerHolder holder, int position) {
             Slice slice = new Slice(holder.getFrame());
             slice.setElevation(2.0f);
 
             if (position == 0) {
-                slice.setRadius(2.0f);
+                slice.setRadius(4.0f);
                 slice.showLeftTopRect(false);
                 slice.showRightTopRect(false);
                 slice.showRightBottomRect(true);
@@ -60,15 +81,15 @@ public class MainActivity extends Activity {
                 slice.showTopEdgeShadow(true);
                 slice.showBottomEdgeShadow(false);
             } else if (position == getItemCount() - 1) {
-                slice.setRadius(2.0f);
+                slice.setRadius(4.0f);
+                slice.showLeftTopRect(true);
+                slice.showRightTopRect(true);
+                slice.showRightBottomRect(false);
+                slice.showLeftBottomRect(false);
                 slice.showTopEdgeShadow(false);
                 slice.showBottomEdgeShadow(true);
             } else {
                 slice.setRadius(0.0f);
-                slice.showLeftTopRect(true);
-                slice.showRightTopRect(true);
-                slice.showRightBottomRect(true);
-                slice.showLeftBottomRect(true);
                 slice.showTopEdgeShadow(false);
                 slice.showBottomEdgeShadow(false);
             }
@@ -96,5 +117,6 @@ public class MainActivity extends Activity {
         RecyclerView recycler = (RecyclerView) findViewById(R.id.recycler);
         recycler.setLayoutManager(new LinearLayoutManager(this));
         recycler.setAdapter(new RecyclerAdapter(this));
+        recycler.addItemDecoration(new DividerItemDecoration(this, 16.0f, 16.0f));
     }
 }
