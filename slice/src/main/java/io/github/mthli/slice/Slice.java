@@ -24,6 +24,7 @@ import android.view.View;
 public class Slice {
     private static final String TAG = Slice.class.getName();
     private static final boolean SDK_LOLLIPOP = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
+    private static final boolean SDK_JB_MR1 = Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1;
 
     public static final float DEFAULT_RADIUS = 0.0f;
     public static final int DEFAULT_BACKGROUND_COLOR = 0xFFFAFAFA;
@@ -45,7 +46,11 @@ public class Slice {
             drawable = new CustomRoundRectDrawableWithShadow(view.getResources(), DEFAULT_BACKGROUND_COLOR, DEFAULT_RADIUS, DEFAULT_ELEVATION, DEFAULT_MAX_ELEVATION);
         }
 
-        view.setBackground(drawable);
+        if (SDK_JB_MR1) {
+            view.setBackground(drawable);
+        } else {
+            view.setBackgroundDrawable(drawable);
+        }
     }
 
     private float dp2px(float dp) {
