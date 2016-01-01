@@ -18,10 +18,13 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler"
+    <FrameLayout android:id="@+id/item"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-    </android.support.v7.widget.RecyclerView>
+            android:layout_height="96dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp">
+    </FrameLayout>
 
 </FrameLayout>

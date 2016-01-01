@@ -16,6 +16,7 @@
 
 package io.github.mthli.slice;
 
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Log;
@@ -28,7 +29,8 @@ public class Slice {
 
     public static final float DEFAULT_RADIUS_DP = 2.0f;
     public static final float DEFAULT_ELEVATION_DP = 2.0f;
-    public static final int DEFAULT_BACKGROUND_COLOR = 0xFFFAFAFA;
+    // public static final int DEFAULT_BACKGROUND_COLOR = 0xFFFAFAFA;
+    public static final int DEFAULT_BACKGROUND_COLOR = Color.BLUE;
 
     private View view;
     private Drawable drawable;
@@ -40,7 +42,7 @@ public class Slice {
 
     private void init() {
         if (SDK_LOLLIPOP) {
-            drawable = new CustomRoundRectDrawable(DEFAULT_BACKGROUND_COLOR, DEFAULT_RADIUS_DP);
+            drawable = new CustomRoundRectDrawable(DEFAULT_BACKGROUND_COLOR, dp2px(DEFAULT_RADIUS_DP));
         } else {
             drawable = new CustomRoundRectDrawableWithShadow(view.getResources(), DEFAULT_BACKGROUND_COLOR, dp2px(DEFAULT_RADIUS_DP), dp2px(DEFAULT_ELEVATION_DP), dp2px(DEFAULT_ELEVATION_DP));
         }
@@ -50,6 +52,8 @@ public class Slice {
         } else {
             view.setBackgroundDrawable(drawable);
         }
+
+        setElevation(DEFAULT_ELEVATION_DP);
     }
 
     private float dp2px(float dp) {
@@ -100,7 +104,7 @@ public class Slice {
         if (SDK_LOLLIPOP) {
             ((CustomRoundRectDrawable) drawable).showRightBottomRect(show);
         } else {
-            ((CustomRoundRectDrawable) drawable).showRightBottomRect(show);
+            ((CustomRoundRectDrawableWithShadow) drawable).showRightBottomRect(show);
         }
     }
 

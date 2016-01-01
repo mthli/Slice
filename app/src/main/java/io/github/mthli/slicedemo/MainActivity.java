@@ -17,20 +17,84 @@
 package io.github.mthli.slicedemo;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
-import android.widget.FrameLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import io.github.mthli.slice.Slice;
 
 public class MainActivity extends Activity {
+    public static class RecyclerAdapter extends RecyclerView.Adapter<RecyclerHolder> {
+        private Context context;
+
+        public RecyclerAdapter(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public RecyclerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new RecyclerHolder(LayoutInflater.from(context).inflate(R.layout.item, parent, false));
+        }
+
+        @Override
+        public int getItemCount() {
+            return 10;
+        }
+
+        @Override
+        public void onBindViewHolder(RecyclerHolder holder, int position) {
+            Slice slice = new Slice(holder.getView());
+            slice.setRadius(8.0f);
+
+            if (position == 0) {
+                slice.showLeftTopRect(false);
+                slice.showRightTopRect(false);
+                slice.showRightBottomRect(true);
+                slice.showLeftButtomRect(true);
+                slice.showTopEdgeShadow(true);
+                slice.showBottomEdgeShadow(false);
+            } else if (position == getItemCount() - 1) {
+                slice.showLeftTopRect(true);
+                slice.showRightTopRect(true);
+                slice.showRightBottomRect(false);
+                slice.showLeftButtomRect(false);
+                slice.showTopEdgeShadow(false);
+                slice.showBottomEdgeShadow(true);
+            } else {
+                slice.showLeftTopRect(true);
+                slice.showRightTopRect(true);
+                slice.showRightBottomRect(true);
+                slice.showLeftButtomRect(true);
+                slice.showTopEdgeShadow(false);
+                slice.showBottomEdgeShadow(false);
+            }
+        }
+    }
+
+    public static class RecyclerHolder extends RecyclerView.ViewHolder {
+        private View view;
+
+        public RecyclerHolder(View view) {
+            super(view);
+            this.view = view;
+        }
+
+        public View getView() {
+            return view;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        FrameLayout frame = (FrameLayout) findViewById(R.id.frame);
-        Slice slice = new Slice(frame);
-        slice.setElevation(8.0f);
-        slice.setRadius(8.0f);
+        RecyclerView recycler = (RecyclerView) findViewById(R.id.recycler);
+        recycler.setLayoutManager(new LinearLayoutManager(this));
+        recycler.setAdapter(new RecyclerAdapter(this));
     }
 }
