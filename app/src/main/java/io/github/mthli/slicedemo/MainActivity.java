@@ -1,12 +1,26 @@
+/*
+ * Copyright (C) 2016 Matthew Lee
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package io.github.mthli.slicedemo;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.widget.FrameLayout;
 
-import io.github.mthli.slice.CustomRoundRectDrawableWithShadow;
+import io.github.mthli.slice.Slice;
 
 public class MainActivity extends Activity {
     @Override
@@ -14,30 +28,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        FrameLayout frameTop = (FrameLayout) findViewById(R.id.frame_top);
-        FrameLayout frameCenter = (FrameLayout) findViewById(R.id.frame_center);
-        FrameLayout frameBottom = (FrameLayout) findViewById(R.id.frame_bottom);
-
-        CustomRoundRectDrawableWithShadow drawableTop = new CustomRoundRectDrawableWithShadow(getResources(), Color.WHITE, 16.0f, 4.0f, 8.0f);
-        CustomRoundRectDrawableWithShadow drawableCenter = new CustomRoundRectDrawableWithShadow(getResources(), Color.WHITE, 16.0f, 4.0f, 8.0f);
-        CustomRoundRectDrawableWithShadow drawableBottom = new CustomRoundRectDrawableWithShadow(getResources(), Color.WHITE, 16.0f, 4.0f, 8.0f);
-
-        drawableTop.showLeftBottomRect(true);
-        drawableTop.showRightBottomRect(true);
-        drawableTop.showBottomEdgeShadow(false);
-        frameTop.setBackground(drawableTop);
-
-        drawableCenter.showLeftTopRect(true);
-        drawableCenter.showRightTopRect(true);
-        drawableCenter.showRightBottomRect(true);
-        drawableCenter.showLeftBottomRect(true);
-        drawableCenter.showTopEdgeShadow(false);
-        drawableCenter.showBottomEdgeShadow(false);
-        frameCenter.setBackground(drawableCenter);
-
-        drawableBottom.showLeftTopRect(true);
-        drawableBottom.showRightTopRect(true);
-        drawableBottom.showTopEdgeShadow(false);
-        frameBottom.setBackground(drawableBottom);
+        FrameLayout frame = (FrameLayout) findViewById(R.id.frame);
+        Slice slice = new Slice(frame);
+        slice.setElevation(8.0f);
+        slice.setRadius(8.0f);
     }
 }

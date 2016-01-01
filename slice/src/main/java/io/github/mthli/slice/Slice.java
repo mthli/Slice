@@ -26,10 +26,9 @@ public class Slice {
     private static final boolean SDK_LOLLIPOP = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
     private static final boolean SDK_JB_MR1 = Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1;
 
-    public static final float DEFAULT_RADIUS = 0.0f;
+    public static final float DEFAULT_RADIUS_DP = 2.0f;
+    public static final float DEFAULT_ELEVATION_DP = 2.0f;
     public static final int DEFAULT_BACKGROUND_COLOR = 0xFFFAFAFA;
-    public static final float DEFAULT_ELEVATION = 0.0f;
-    public static final float DEFAULT_MAX_ELEVATION = 0.0f;
 
     private View view;
     private Drawable drawable;
@@ -41,9 +40,9 @@ public class Slice {
 
     private void init() {
         if (SDK_LOLLIPOP) {
-            drawable = new CustomRoundRectDrawable(DEFAULT_BACKGROUND_COLOR, DEFAULT_RADIUS);
+            drawable = new CustomRoundRectDrawable(DEFAULT_BACKGROUND_COLOR, DEFAULT_RADIUS_DP);
         } else {
-            drawable = new CustomRoundRectDrawableWithShadow(view.getResources(), DEFAULT_BACKGROUND_COLOR, DEFAULT_RADIUS, DEFAULT_ELEVATION, DEFAULT_MAX_ELEVATION);
+            drawable = new CustomRoundRectDrawableWithShadow(view.getResources(), DEFAULT_BACKGROUND_COLOR, dp2px(DEFAULT_RADIUS_DP), dp2px(DEFAULT_ELEVATION_DP), dp2px(DEFAULT_ELEVATION_DP));
         }
 
         if (SDK_JB_MR1) {
