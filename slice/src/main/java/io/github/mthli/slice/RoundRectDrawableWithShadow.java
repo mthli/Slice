@@ -85,7 +85,7 @@ public class RoundRectDrawableWithShadow extends Drawable {
      */
     protected boolean mPrintedShadowClipWarning = false;
 
-    RoundRectDrawableWithShadow(Resources resources, int backgroundColor, float radius,
+    public RoundRectDrawableWithShadow(Resources resources, int backgroundColor, float radius,
                                 float shadowSize, float maxShadowSize) {
         mShadowStartColor = resources.getColor(R.color.cardview_shadow_start_color);
         mShadowEndColor = resources.getColor(R.color.cardview_shadow_end_color);

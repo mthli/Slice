@@ -2,11 +2,10 @@ package io.github.mthli.slicedemo;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 
-import io.github.mthli.slice.CustomRoundRectDrawable;
+import io.github.mthli.slice.CustomRoundRectDrawableWithShadow;
 
 public class MainActivity extends Activity {
     @Override
@@ -14,14 +13,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        final FrameLayout frame = (FrameLayout) findViewById(R.id.frame);
-        final CustomRoundRectDrawable drawable = new CustomRoundRectDrawable(Color.WHITE, 16.0f);
+        FrameLayout frame = (FrameLayout) findViewById(R.id.frame);
+        CustomRoundRectDrawableWithShadow drawable = new CustomRoundRectDrawableWithShadow(getResources(), Color.TRANSPARENT, 16.0f, 4.0f, 8.0f);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            frame.setBackground(drawable);
-            frame.setElevation(8.0f);
-        } else {
-            // TODO
-        }
+        frame.setBackground(drawable);
     }
 }

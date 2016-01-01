@@ -6,10 +6,10 @@ import android.graphics.Path;
 import android.graphics.RectF;
 
 public class CustomRoundRectDrawable extends RoundRectDrawable {
-    private boolean leftTopRect = true;
-    private boolean rightTopRect = true;
-    private boolean leftBottomRect = false;
-    private boolean rightBottomRect = false;
+    private boolean leftTopRect;
+    private boolean rightTopRect;
+    private boolean leftBottomRect;
+    private boolean rightBottomRect;
 
     public CustomRoundRectDrawable(int backgroundColor, float radius) {
         super(backgroundColor, radius);
@@ -17,7 +17,7 @@ public class CustomRoundRectDrawable extends RoundRectDrawable {
 
     @Override
     public void draw(Canvas canvas) {
-        canvas.drawRoundRect(mBoundsF, mRadius, mRadius, mPaint);
+        super.draw(canvas);
 
         if (leftTopRect) {
             canvas.drawRect(buildLeftTopRect(), mPaint);
