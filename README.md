@@ -15,23 +15,6 @@ For example, we can build a card style background for RecyclerView:
 
 And here has a [demo apk]( "SliceDemo.1.0.apk"), and it's [source code]( "SliceDemo.1.0.apk's source code"), very easy to understand~
 
-# Gradle
-
-At your top-level `build.gradle` file:
-
-    repositories {
-        // ...
-        maven { url 'https://jitpack.io' }
-    }
-    
-And then at your project `build.gradle` file:
-
-    dependencies {
-        compile 'com.github.mthli:Slice:v1.0'
-    }
-
-Done!
-
 ## API
 
  - `setRadius(float radiusDp)`
@@ -55,6 +38,23 @@ Done!
  - `showRightEdgeShadow(boolean show)` only work for pre API 21.
  
  - `showBottomEdgeShadow(boolean show)` only work for pre API 21.
+ 
+## Gradle
+
+At your top-level `build.gradle` file:
+
+    repositories {
+        // ...
+        maven { url 'https://jitpack.io' }
+    }
+    
+And then at your project `build.gradle` file:
+
+    dependencies {
+        compile 'com.github.mthli:Slice:v1.0'
+    }
+
+Done!
 
 ## License
 
