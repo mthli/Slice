@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Build;
 
@@ -133,6 +134,18 @@ public class CustomRoundRectDrawableWithShadow extends RoundRectDrawableWithShad
         drawTopEdgeShadow(canvas, top, inset, suggestHorizontal);
         drawRightEdgeShadow(canvas, top, inset, suggestVertical);
         drawBottomEdgeShadow(canvas, top, inset, suggestHorizontal);
+    }
+
+    @Override
+    protected void buildComponents(Rect bounds) {
+        float vOffset = mRawMaxShadowSize * SHADOW_MULTIPLIER;
+        float left = leftEdgeShadow ? bounds.left + mRawMaxShadowSize : bounds.left;
+        float top = topEdgeShadow ? bounds.top + vOffset : bounds.top;
+        float right = rightEdgeShadow ? bounds.right - mRawMaxShadowSize : bounds.right;
+        float bottom = bottomEdgeShadow ? bounds.bottom - vOffset : bounds.bottom;
+
+        mCardBounds.set(left, top, right, bottom);
+        buildShadowCorners();
     }
 
     private RectF buildLeftTopRect() {
