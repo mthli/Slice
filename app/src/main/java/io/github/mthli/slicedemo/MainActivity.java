@@ -21,7 +21,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,10 +49,10 @@ public class MainActivity extends Activity {
         @Override
         public void onBindViewHolder(final RecyclerHolder holder, int position) {
             Slice slice = new Slice(holder.getFrame());
-            slice.setRadius(8.0f);
-            slice.setElevation(8.0f);
+            slice.setElevation(2.0f);
 
             if (position == 0) {
+                slice.setRadius(2.0f);
                 slice.showLeftTopRect(false);
                 slice.showRightTopRect(false);
                 slice.showRightBottomRect(true);
@@ -61,13 +60,11 @@ public class MainActivity extends Activity {
                 slice.showTopEdgeShadow(true);
                 slice.showBottomEdgeShadow(false);
             } else if (position == getItemCount() - 1) {
-                slice.showLeftTopRect(true);
-                slice.showRightTopRect(true);
-                slice.showRightBottomRect(false);
-                slice.showLeftBottomRect(false);
+                slice.setRadius(2.0f);
                 slice.showTopEdgeShadow(false);
                 slice.showBottomEdgeShadow(true);
             } else {
+                slice.setRadius(0.0f);
                 slice.showLeftTopRect(true);
                 slice.showRightTopRect(true);
                 slice.showRightBottomRect(true);
