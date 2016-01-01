@@ -1,5 +1,4 @@
 /*
- * Copyright (C) 2015 Matthew Lee
  * Copyright (C) 2014 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package io.github.mthli.slice;
 
 import android.graphics.Canvas;
@@ -34,14 +34,14 @@ import static io.github.mthli.slice.RoundRectDrawableWithShadow.calculateHorizon
  * <p>
  * Simpler and uses less resources compared to GradientDrawable or ShapeDrawable.
  */
-public class RoundRectDrawable extends Drawable {
-    protected float mRadius;
-    protected final Paint mPaint;
-    protected final RectF mBoundsF;
-    protected final Rect mBoundsI;
-    protected float mPadding;
-    protected boolean mInsetForPadding = false;
-    protected boolean mInsetForRadius = true;
+class RoundRectDrawable extends Drawable {
+    private float mRadius;
+    private final Paint mPaint;
+    private final RectF mBoundsF;
+    private final Rect mBoundsI;
+    private float mPadding;
+    private boolean mInsetForPadding = false;
+    private boolean mInsetForRadius = true;
 
     public RoundRectDrawable(int backgroundColor, float radius) {
         mRadius = radius;
@@ -51,7 +51,7 @@ public class RoundRectDrawable extends Drawable {
         mBoundsI = new Rect();
     }
 
-    protected void setPadding(float padding, boolean insetForPadding, boolean insetForRadius) {
+    void setPadding(float padding, boolean insetForPadding, boolean insetForRadius) {
         if (padding == mPadding && mInsetForPadding == insetForPadding &&
                 mInsetForRadius == insetForRadius) {
             return;
@@ -63,7 +63,7 @@ public class RoundRectDrawable extends Drawable {
         invalidateSelf();
     }
 
-    protected float getPadding() {
+    float getPadding() {
         return mPadding;
     }
 
@@ -72,7 +72,7 @@ public class RoundRectDrawable extends Drawable {
         canvas.drawRoundRect(mBoundsF, mRadius, mRadius, mPaint);
     }
 
-    protected void updateBounds(Rect bounds) {
+    private void updateBounds(Rect bounds) {
         if (bounds == null) {
             bounds = getBounds();
         }
@@ -98,7 +98,7 @@ public class RoundRectDrawable extends Drawable {
         outline.setRoundRect(mBoundsI, mRadius);
     }
 
-    protected void setRadius(float radius) {
+    void setRadius(float radius) {
         if (radius == mRadius) {
             return;
         }
