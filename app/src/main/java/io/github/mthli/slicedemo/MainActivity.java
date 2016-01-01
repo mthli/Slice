@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
         CustomRoundRectDrawableWithShadow drawableCenter = new CustomRoundRectDrawableWithShadow(getResources(), Color.WHITE, 16.0f, 4.0f, 8.0f);
         CustomRoundRectDrawableWithShadow drawableBottom = new CustomRoundRectDrawableWithShadow(getResources(), Color.WHITE, 16.0f, 4.0f, 8.0f);
 
-        drawableTop.setLeftButtomRect(true);
+        drawableTop.setLeftBottomRect(true);
         drawableTop.setRightBottomRect(true);
         drawableTop.setBottomEdgeShadow(false);
         frameTop.setBackground(drawableTop);
@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
         drawableCenter.setLeftTopRect(true);
         drawableCenter.setRightTopRect(true);
         drawableCenter.setRightBottomRect(true);
-        drawableCenter.setLeftButtomRect(true);
+        drawableCenter.setLeftBottomRect(true);
         drawableCenter.setTopEdgeShadow(false);
         drawableCenter.setBottomEdgeShadow(false);
         frameCenter.setBackground(drawableCenter);
