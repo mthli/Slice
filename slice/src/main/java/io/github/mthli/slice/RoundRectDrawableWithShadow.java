@@ -72,18 +72,18 @@ class RoundRectDrawableWithShadow extends Drawable {
     // actual value set by developer
     float mRawShadowSize;
 
-    private boolean mDirty = true;
+    protected boolean mDirty = true;
 
-    private final int mShadowStartColor;
+    protected final int mShadowStartColor;
 
-    private final int mShadowEndColor;
+    protected final int mShadowEndColor;
 
-    private boolean mAddPaddingForCorners = true;
+    protected boolean mAddPaddingForCorners = true;
 
     /**
      * If shadow size is set to a value above max shadow, we print a warning
      */
-    private boolean mPrintedShadowClipWarning = false;
+    protected boolean mPrintedShadowClipWarning = false;
 
     RoundRectDrawableWithShadow(Resources resources, int backgroundColor, float radius,
                                 float shadowSize, float maxShadowSize) {
