@@ -58,9 +58,14 @@ And then at your project `build.gradle` file:
 
 Done!
 
+## Thanks
+
+ - [CardView](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwicgMb484rKAhUhJaYKHQG9AS0QFggfMAA&url=http%3A%2F%2Fdeveloper.android.com%2Freference%2Fandroid%2Fsupport%2Fv7%2Fwidget%2FCardView.html&usg=AFQjCNGAnZUJaZn0kcQuGn6tnrTfsYfTWw&sig2=3NybbX-R_8BWSq_XFxdzjg "CardView | Android Developers")
+
 ## License
 
-    Copyright 2016 Matthew Lee
+    Copyright (C) 2016 Matthew Lee
+    Copyright (C) 2014 The Android Open Source Project
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
