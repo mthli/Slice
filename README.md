@@ -13,15 +13,17 @@ For example, we can build a card style background for RecyclerView:
 
 ![example.png](./example.png "example.png")
 
-And here has a [demo apk](https://github.com/mthli/Slice/releases/download/v1.0/SliceDemo.1.0.apk "SliceDemo.1.0.apk"), and it's [source code](https://github.com/mthli/Slice/tree/master/app "SliceDemo.1.0.apk's source code"), very easy to understand~
+Here has a [demo apk](https://github.com/mthli/Slice/releases/download/v1.1/SliceDemo.1.1.apk "SliceDemo.1.1.apk"), and it's [source code](https://github.com/mthli/Slice/tree/master/app "SliceDemo.1.1.apk's source code"), very easy to understand~
 
 ## API
 
- - `setRadius(float radiusDp)`
+ - `setColor(int color)`
  
  - `setElevation(float elevationDp)`
  
- - `setColor(int color)`
+ - `setRadius(float radiusDp)`
+ 
+ - `setRipple(int mask)` only work for API 21+.
  
  - `showLeftTopRect(boolean show)`
  
@@ -53,7 +55,7 @@ At your top-level `build.gradle` file:
 And then at your project `build.gradle` file:
 
     dependencies {
-        compile 'com.github.mthli:Slice:v1.0'
+        compile 'com.github.mthli:Slice:v1.1'
     }
 
 Done!
