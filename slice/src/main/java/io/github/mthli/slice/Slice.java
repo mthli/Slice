@@ -16,7 +16,14 @@
 
 package io.github.mthli.slice;
 
+import android.annotation.TargetApi;
+import android.content.res.ColorStateList;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.RippleDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.Shape;
 import android.os.Build;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +35,7 @@ public class Slice {
 
     public static final float DEFAULT_RADIUS_DP = 2.0f;
     public static final float DEFAULT_ELEVATION_DP = 2.0f;
+    public static final int DEFAULT_RIPPLE_COLOR = 0x40000000;
     public static final int DEFAULT_BACKGROUND_COLOR = 0xFFFAFAFA;
 
     private View view;
@@ -38,6 +46,7 @@ public class Slice {
         init();
     }
 
+    @SuppressWarnings("NewApi")
     private void init() {
         if (SDK_LOLLIPOP) {
             drawable = new CustomRoundRectDrawable(DEFAULT_BACKGROUND_COLOR, dp2px(DEFAULT_RADIUS_DP));
@@ -51,11 +60,41 @@ public class Slice {
             view.setBackgroundDrawable(drawable);
         }
 
+        setRipple(DEFAULT_RIPPLE_COLOR);
         setElevation(DEFAULT_ELEVATION_DP);
     }
 
     private float dp2px(float dp) {
         return view.getResources().getDisplayMetrics().density * dp;
+    }
+
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    private ColorStateList buildColorStateList(int normal, int pressed) {
+        return new ColorStateList(new int[][]{
+                new int[] {android.R.attr.state_pressed},
+                new int[] {android.R.attr.state_focused},
+                new int[] {android.R.attr.state_activated},
+                new int[] {}},
+                new int[] {pressed, pressed, pressed, normal}
+        );
+    }
+
+    public void setColor(int color) {
+        if (SDK_LOLLIPOP) {
+            ((CustomRoundRectDrawable) drawable).setColor(color);
+        } else {
+            ((CustomRoundRectDrawableWithShadow) drawable).setColor(color);
+        }
+    }
+
+    @SuppressWarnings("NewApi")
+    public void setElevation(float elevationDp) {
+        if (SDK_LOLLIPOP) {
+            view.setElevation(dp2px(elevationDp));
+        } else {
+            Log.i(TAG, "setElevation() only support range from 0dp to 2dp pre API 21.");
+            ((CustomRoundRectDrawableWithShadow) drawable).setShadowSize(dp2px(elevationDp));
+        }
     }
 
     public void setRadius(float radiusDp) {
@@ -66,19 +105,27 @@ public class Slice {
         }
     }
 
-    public void setElevation(float elevationDp) {
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public void setRipple(final int mask) {
         if (SDK_LOLLIPOP) {
-            view.setElevation(dp2px(elevationDp));
-        } else {
-            ((CustomRoundRectDrawableWithShadow) drawable).setShadowSize(dp2px(elevationDp));
-        }
-    }
+            if (mask != 0) {
+                ShapeDrawable shape = new ShapeDrawable(new Shape() {
+                    @Override
+                    public void draw(Canvas canvas, Paint paint) {
+                        paint.setColor(mask);
+                        canvas.drawPath(((CustomRoundRectDrawable) drawable).buildConvexPath(), paint);
+                    }
+                });
 
-    public void setColor(int color) {
-        if (SDK_LOLLIPOP) {
-            ((CustomRoundRectDrawable) drawable).setColor(color);
+                int color = ((CustomRoundRectDrawable) drawable).getColor();
+                RippleDrawable ripple = new RippleDrawable(buildColorStateList(color, mask), drawable, shape);
+
+                view.setBackground(ripple);
+            } else {
+                view.setBackground(drawable);
+            }
         } else {
-            ((CustomRoundRectDrawableWithShadow) drawable).setColor(color);
+            Log.i(TAG, "setRipple() only work for API 21+");
         }
     }
 

@@ -104,7 +104,7 @@ public class CustomRoundRectDrawable extends RoundRectDrawable {
         return rectF;
     }
 
-    private Path buildConvexPath() {
+    protected Path buildConvexPath() {
         Path path = new Path();
 
         path.moveTo(mBoundsF.left, (mBoundsF.top + mBoundsF.bottom) / 2.0f);
@@ -144,13 +144,13 @@ public class CustomRoundRectDrawable extends RoundRectDrawable {
         return path;
     }
 
+    protected int getColor() {
+        return mPaint.getColor();
+    }
+
     @Override
     public void setRadius(float radius) {
         super.setRadius(radius);
-    }
-
-    public int getColor() {
-        return mPaint.getColor();
     }
 
     @Override

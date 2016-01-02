@@ -17,6 +17,7 @@
 
 package io.github.mthli.slice;
 
+import android.annotation.TargetApi;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Outline;
@@ -25,6 +26,7 @@ import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 
 import static io.github.mthli.slice.RoundRectDrawableWithShadow.calculateVerticalPadding;
 import static io.github.mthli.slice.RoundRectDrawableWithShadow.calculateHorizontalPadding;
@@ -35,6 +37,7 @@ import static io.github.mthli.slice.RoundRectDrawableWithShadow.calculateHorizon
  * <p>
  * Simpler and uses less resources compared to GradientDrawable or ShapeDrawable.
  */
+@TargetApi(Build.VERSION_CODES.LOLLIPOP)
 class RoundRectDrawable extends Drawable {
     protected float mRadius;
     protected final Paint mPaint;

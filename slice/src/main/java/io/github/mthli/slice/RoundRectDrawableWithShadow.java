@@ -17,6 +17,7 @@
 
 package io.github.mthli.slice;
 
+import android.annotation.TargetApi;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
@@ -29,10 +30,12 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 
 /**
  * A rounded rectangle drawable which also includes a shadow around.
  */
+@TargetApi(Build.VERSION_CODES.KITKAT)
 class RoundRectDrawableWithShadow extends Drawable {
     // used to calculate content padding
     final static double COS_45 = Math.cos(Math.toRadians(45));
