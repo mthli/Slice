@@ -13,7 +13,7 @@ For example, we can build a card style background for RecyclerView:
 
 ![example.png](./example.png "example.png")
 
-Here has a [demo apk](https://github.com/mthli/Slice/releases/download/v1.1/SliceDemo.1.1.apk "SliceDemo.1.1.apk"), and it's [source code](https://github.com/mthli/Slice/tree/master/app "SliceDemo.1.1.apk's source code"), very easy to understand~
+Here has a [demo apk](https://github.com/mthli/Slice/releases/download/v1.2/SliceDemo.1.2.apk "SliceDemo.1.2.apk"), and it's [source code](https://github.com/mthli/Slice/tree/master/app "SliceDemo.1.2.apk's source code"), very easy to understand~
 
 ## API
 
@@ -55,7 +55,7 @@ At your top-level `build.gradle` file:
 And then at your project `build.gradle` file:
 
     dependencies {
-        compile 'com.github.mthli:Slice:v1.1'
+        compile 'com.github.mthli:Slice:v1.2'
     }
 
 Done!

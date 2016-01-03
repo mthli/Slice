@@ -68,14 +68,12 @@ public class Slice {
         return view.getResources().getDisplayMetrics().density * dp;
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    private ColorStateList buildColorStateList(int normal, int pressed) {
+    private ColorStateList buildColorStateList(int pressed) {
         return new ColorStateList(new int[][]{
                 new int[] {android.R.attr.state_pressed},
                 new int[] {android.R.attr.state_focused},
-                new int[] {android.R.attr.state_activated},
                 new int[] {}},
-                new int[] {pressed, pressed, pressed, normal}
+                new int[] {pressed, pressed, pressed}
         );
     }
 
@@ -117,9 +115,7 @@ public class Slice {
                     }
                 });
 
-                int color = ((CustomRoundRectDrawable) drawable).getColor();
-                RippleDrawable ripple = new RippleDrawable(buildColorStateList(color, mask), drawable, shape);
-
+                RippleDrawable ripple = new RippleDrawable(buildColorStateList(mask), drawable, shape);
                 view.setBackground(ripple);
             } else {
                 view.setBackground(drawable);
