@@ -1,6 +1,8 @@
 Slice
 ===
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Slice-brightgreen.svg?style=flat-square)](http://android-arsenal.com/details/1/2979)
+
 **YOU DON'T NEED CardView**.
 
 Android drawable that allows you custom round rect position, with more friendly and flexible API. 
