@@ -69,10 +69,11 @@ public class MainActivity extends Activity {
 
         @Override
         public void onBindViewHolder(final RecyclerHolder holder, int position) {
+            int viewType = getItemViewType(position);
             Slice slice = new Slice(holder.getFrame());
             slice.setElevation(2.0f);
 
-            if (position == 0) {
+            if (viewType == VIEW_TYPE_TOP) {
                 slice.setRadius(8.0f);
                 slice.showLeftTopRect(false);
                 slice.showRightTopRect(false);
@@ -80,7 +81,7 @@ public class MainActivity extends Activity {
                 slice.showLeftBottomRect(true);
                 slice.showTopEdgeShadow(true);
                 slice.showBottomEdgeShadow(false);
-            } else if (position == getItemCount() - 1) {
+            } else if (viewType == VIEW_TYPE_CENTER) {
                 slice.setRadius(8.0f);
                 slice.showLeftTopRect(true);
                 slice.showRightTopRect(true);
