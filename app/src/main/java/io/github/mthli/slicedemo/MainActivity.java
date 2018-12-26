@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Matthew Lee
+ * Copyright (C) 2018 Matthew Lee
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -81,7 +81,7 @@ public class MainActivity extends Activity {
                 slice.showLeftBottomRect(true);
                 slice.showTopEdgeShadow(true);
                 slice.showBottomEdgeShadow(false);
-            } else if (viewType == VIEW_TYPE_CENTER) {
+            } else if (viewType == VIEW_TYPE_BOTTOM) {
                 slice.setRadius(8.0f);
                 slice.showLeftTopRect(true);
                 slice.showRightTopRect(true);

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Matthew Lee
+ * Copyright (C) 2018 Matthew Lee
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,16 +17,18 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.5.0'
+        classpath 'com.android.tools.build:gradle:3.2.1'
     }
 }
 
 allprojects {
     repositories {
         jcenter()
+        google()
     }
 }
 
