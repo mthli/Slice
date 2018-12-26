@@ -61,7 +61,7 @@ At your top-level `build.gradle` file:
 And then at your project `build.gradle` file:
 
     dependencies {
-        compile 'com.github.mthli:Slice:v1.3'
+        implementation 'com.github.mthli:Slice:v1.3'
     }
 
 Done!
